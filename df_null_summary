@@ -1,0 +1,8 @@
+def df_null_summary(df):
+    '''Generates simple null values statistics for all columns of a dataframe
+    Call this along with the apply method on the dataframe
+    USAGE as: dataframe.apply(func_name, axis=0)
+    No data validations are being performed, GIGO in place'''
+    
+    counter = df.isnull().sum()
+    print('Null values in ' + df.name + ' are ' + str(counter))
