@@ -1,0 +1,6 @@
+def df_basic_stats(df):
+    '''Generates basic statistics for values in a dataframe column
+    USAGE as: dataframe.apply(func_name)
+    No data validations are being performed, GIGO in place'''
+    
+    print(df.name + ', ' + 'Count: ' + str(df.notnull().count()) + ' ' + 'Not null: ' + str(df.count()) + ' ' + 'Unique: ' + str(len(df.unique())) + '\n')
