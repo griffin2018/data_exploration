@@ -6,5 +6,5 @@ def scaled_vs_unscaled_using_scaler(X, y, clf=KNeighborsClassifier()):
     model_scaled = cross_val_score(clf, Z, y, cv=10)
     model_unscaled = cross_val_score(clf, X, y, cv=10)
     
-    print('Accuracy with Scaling: {}'.format(np.mean(model_scaled)))
-    print('Accuracy without Scaling: {}'.format(np.mean(model_unscaled)))
+    print('Accuracy with Scaling ' + str(clf) + ': {}'.format(np.mean(model_scaled)))
+    print('Accuracy without Scaling ' + str(clf) + ': {}'.format(np.mean(model_unscaled)))
