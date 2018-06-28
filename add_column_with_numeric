@@ -4,5 +4,5 @@ def add_column(df):
     USAGE as: dataframe.column_name.apply(func_name, patterns)
     No data validations are being performed, GIGO in place'''
     
-    b = search_col_with_regex(df, patterns)
-    return dictionary[b]
+    key = search_col_with_regex(df, patterns)
+    return dictionary[key]
