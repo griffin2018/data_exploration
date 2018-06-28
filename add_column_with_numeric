@@ -1,7 +1,7 @@
 def add_column(df):
     '''Returns a numeric value for pattern in a column. Dictionary (refer create_dictionary) 
     has to be made available before running it
-    USAGE as: dataframe.column_name.apply(func_name)
+    USAGE as: dataframe.column_name.apply(func_name, patterns)
     No data validations are being performed, GIGO in place'''
     
     b = search_col_with_regex(df, patterns)
