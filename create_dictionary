@@ -1,0 +1,9 @@
+def create_dict(df, col_name):
+    '''Generates a dictionary for a column using patterns while mapping each value to a numeric
+    No data validations are being performed, GIGO in place'''
+    
+    extract = sorted(df[col_name].apply(search_col_with_regex, patterns).unique())
+    num_values = range(len(extract))
+    dictionary = dict(zip(extract, num_values))
+    
+    return dictionary
