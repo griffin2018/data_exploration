@@ -1,4 +1,4 @@
-def scaled_vs_unscaled(X, y, steps):
+def scaled_vs_unscaled(X, y, clf=KNeighborsClassifier()):
     '''Compares performance of a scaled  model vs unscaled one'''
     
     steps = [('scaler', StandardScaler()), ('clf', KneighborsClassifier())]
