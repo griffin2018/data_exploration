@@ -2,7 +2,7 @@ def search_col_with_regex(df, patterns):
     '''Applies different regex patterns with a capturing group to identify if regex covers all scenarios
     patterns can be a list of patterns or a single pattern, previous regex compilation mandatory
     Call this along with the apply method on the dataframe
-    USAGE as: dataframe.column_name.apply(func_name)
+    USAGE as: dataframe.column_name.apply(func_name, patterns)
     No data validations are being performed, GIGO in place'''
 
     for pattern in patterns:
