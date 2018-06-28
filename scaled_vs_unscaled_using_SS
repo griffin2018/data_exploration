@@ -1,5 +1,5 @@
 def scaled_vs_unscaled_using_SS(X, y, clf=KNeighborsClassifier()):
-    '''Compares performance of a scaled  model vs unscaled one'''
+    '''Compares performance of a scaled/unscaled model using StandardScaler'''
     
     steps = [('scaler', StandardScaler()), ('clf', clf)]
     pipeline = Pipeline(steps)
@@ -9,5 +9,5 @@ def scaled_vs_unscaled_using_SS(X, y, clf=KNeighborsClassifier()):
     model_scaled = pipeline.fit(X_train, y_train)
     model_unscaled = clf.fit(X_train, y_train)
     
-    print('Accuracy with Scaling: {}'.format(model_scaled.score(X_test, y_test)))
-    print('Accuracy without Scaling: {}'.format(model_unscaled.score(X_test, y_test)))
+    print('Accuracy with Scaling using ' + str(clf) + ': {}'.format(model_scaled.score(X_test, y_test)))
+    print('Accuracy without Scaling using ' + str(clf) + ': {}'.format(model_unscaled.score(X_test, y_test)))
