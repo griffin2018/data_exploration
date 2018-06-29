@@ -11,3 +11,4 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import Lasso, Ridge, LogisticRegression
+from sklearn.multiclass import OneVsRestClassifier
