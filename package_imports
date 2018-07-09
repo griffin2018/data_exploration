@@ -1,13 +1,16 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import regex as re
+
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split, cross_val_score, GridSearchCV
 from sklearn.preprocessing import scale, StandardScaler
 from sklearn.metrics import classification_report, confusion_matrix
 
+from sklearn.feature_extraction.text import CountVectorizer, HashingVectorizer, TfidfVectorizer
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import Lasso, Ridge, LogisticRegression
