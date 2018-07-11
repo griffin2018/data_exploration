@@ -1,0 +1,58 @@
+def modelsearch_using_GSCV(X, y, cv=5):
+    '''This function helps in finding the right classifier with the correct parameters
+    It uses brute force and hence exercise caution while using on large datasets
+    CV can be overriden with any other value, but 5 usually works
+    Can be used in conjunction with list comprehension for finding the right value of cv as well
+    USAGE as: [modelsearch_using_GSCV(X, y, cv) for cv in range(2, 10)]'''
+    
+    # create a list of names and classifiers 
+    names = [
+#             'Naive Bayes',
+             'Linear SVM',
+             'Logistic Regression',
+             'Random Forest',
+             'Multilayer Perceptron'
+            ]
+
+    classifiers = [
+#        MultinomialNB(),
+        LinearSVC(),
+        LogisticRegression(),
+        RandomForestClassifier(),
+        MLPClassifier()
+    ]
+
+    # create the parameters that need to be passed on for GridSearchCV, every classifier will have its own dict
+    parameters = [
+#                  {'tfidf__ngram_range': [(1, 1), (1, 2), (1, 3)],
+#                  'tfidf__binary': (True, False),
+#                  'clf__alpha': (1e-2, 1e-3)},
+                  {'tfidf__ngram_range': [(1, 1), (1, 2), (1, 3)],
+                  'tfidf__binary': (True, False),
+                  'clf__C': (np.logspace(-5, 1, 5))},
+                  {'tfidf__ngram_range': [(1, 1), (1, 2), (1, 3)],
+                  'tfidf__binary': (True, False),
+                  'clf__C': (np.logspace(-5, 1, 5))},
+                  {'tfidf__ngram_range': [(1, 1), (1, 2), (1, 3)],
+                  'tfidf__binary': (True, False),
+                  'clf__max_depth': (1, 2)},
+                  {'tfidf__ngram_range': [(1, 1), (1, 2), (1, 3)],
+                  'tfidf__binary': (True, False),
+                  'clf__alpha': (1e-2, 1e-3)}
+                 ]
+
+    # combine names, classifiers and parameters using zip
+    for name, classifier, params in zip(names, classifiers, parameters):
+        pipeline = Pipeline([
+            ('tfidf', TfidfVectorizer()),
+            ('clf', classifier),
+        ])
+        gscv = GridSearchCV(pipeline, param_grid=params, cv=cv, n_jobs=-1)
+        clf = gscv.fit(X, y)
+
+        print('Classifier name: ' + str(name))
+        print('Best estimator is: ' + str(clf.best_estimator_))
+        print('Best parameters are: ' + str(clf.best_params_))
+        print('Best score achieved is: ' + str(clf.best_score_) + '\n')
+    #    print(clf.best_params_)
+    #    print("{} score: {}".format(name, score))
