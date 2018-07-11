@@ -1,0 +1,9 @@
+# initialize dictionary for storing values
+d = {'classifier': [], 'best_score': [], 'cv' = []}
+
+# uncomment (d['classifier'].append(name)), (d['best_score'].append(clf.best_score_)) from modelsearch_using_GSCV function before running
+# use with caution as this is essentially a brute force method and may consume excessive time for even moderately sized datasets
+[modelsearch_using_GSCV(X, y, cv) for cv in range(3, 6)]
+
+df_gscv = pd.DataFrame(d)
+df_gscv[df_gscv['best_score'] == df_gscv['best_score'].max()]
