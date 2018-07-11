@@ -50,10 +50,10 @@ def modelsearch_using_GSCV(X, y, cv=5):
         gscv = GridSearchCV(pipeline, param_grid=params, cv=cv, n_jobs=-1)
         clf = gscv.fit(X, y)
 
-        print('Classifier name: ' + str(name))
-        print('Best estimator is: ' + str(clf.best_estimator_))
-        print('Best parameters are: ' + str(clf.best_params_))
-        print('Best score achieved is: ' + str(clf.best_score_) + '\n')
+#        print('Classifier name: ' + str(name))
+#        print('Best estimator is: ' + str(clf.best_estimator_))
+#        print('Best parameters are: ' + str(clf.best_params_))
+#        print('Best score achieved is: ' + str(clf.best_score_) + '\n')
 
 # uncomment below 2 lines if storing values in a global dictionary
 # this can be later used to plot graph with varying cv values
@@ -61,6 +61,7 @@ def modelsearch_using_GSCV(X, y, cv=5):
 
 #        d['classifier'].append(name)
 #        d['best_score'].append(clf.best_score_)
+#        d['cv'].append(cv)
         
     #    print(clf.best_params_)
     #    print("{} score: {}".format(name, score))
