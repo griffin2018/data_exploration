@@ -62,3 +62,4 @@ def modelsearch_using_GSCV(X, y, cv=5):
         d['classifier'].append(name)
         d['best_score'].append(clf.best_score_)
         d['cv'].append(cv)
+        d['params'].append(clf.best_params_)
