@@ -1,5 +1,5 @@
 # initialize dictionary for storing values
-d = {'classifier': [], 'best_score': [], 'cv': []}
+d = {'classifier': [], 'best_score': [], 'cv': [], 'params': []}
 
 # uncomment (d['classifier'].append(name)), (d['best_score'].append(clf.best_score_)) from modelsearch_using_GSCV function before running
 # use with caution as this is essentially a brute force method and may consume excessive time for even moderately sized datasets
