@@ -3,7 +3,7 @@ def modelsearch_using_GSCV(X, y, cv=5):
     It uses brute force and hence exercise caution while using on large datasets
     CV can be overriden with any other value, but 5 usually works
     Can be used in conjunction with list comprehension for finding the right value of cv as well
-    USAGE as: [modelsearch_using_GSCV(X, y, cv) for cv in range(2, 10)]'''
+    USAGE as: [modelsearch_using_GSCV(X, y, cv) for cv in range(3, 6)]'''
     
     # create a list of names and classifiers 
     names = [
@@ -57,11 +57,9 @@ def modelsearch_using_GSCV(X, y, cv=5):
 
 # uncomment below 2 lines if storing values in a global dictionary
 # this can be later used to plot graph with varying cv values
-# refer to --- for more details
+# refer to modelsearch_using_cv for more details
 
-#        d['classifier'].append(name)
-#        d['best_score'].append(clf.best_score_)
-#        d['cv'].append(cv)
+        d['classifier'].append(name)
+        d['best_score'].append(clf.best_score_)
+        d['cv'].append(cv)
         
-    #    print(clf.best_params_)
-    #    print("{} score: {}".format(name, score))
