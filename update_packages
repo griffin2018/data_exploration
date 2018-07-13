@@ -1,3 +1,4 @@
+import pandas as pd
 import pip
 from subprocess import call
 
@@ -6,3 +7,16 @@ from subprocess import call
 #call("pip install --upgrade " + ' '.join(packages), shell=True)
 
 call('pip freeze ' + '> ' + 'C:\\Users\\san\\Documents\\Python\\upgrade.txt', shell=True)
+df1 = pd.read_csv('C:\\Users\\san\\Documents\\Python\\upgrade.txt', header=None, names=['package'])
+df2 = pd.read_csv('C:\\Users\\san\\Documents\\Python\\upgrade_list.txt', header=None, names=['package', 'version'])
+
+if df2['package'].empty:
+    print('Empty upgrade file provided')
+elif df2['package'].notnull().all():
+    repl = lambda x: x.group(1) + '>' + x.group(3)
+    df1['package'] = df1['package'].str.replace(r'([A-Za-z1-9]+)(=)(.*)', repl)
+    df1['package'] = df1[df1['package'].str.extract(r'([A-Za-z1-9]+)(>)(.*)')[0].isin(df2['package'])]
+    df1[df1['package'].notnull()].to_csv('C:\\Users\\san\\Documents\\Python\\upgrade.txt', header=False, index=False)
+#    call('pip install --upgrade ' + '-r ' + 'C:\\Users\\san\\Documents\\Python\\upgrade.txt', shell=True)
+else:
+    print('File containing Null/NA values in the first column')
