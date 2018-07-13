@@ -17,6 +17,6 @@ elif df2['package'].notnull().all():
     df1['package'] = df1['package'].str.replace(r'([A-Za-z1-9]+)(=)(.*)', repl)
     df1['package'] = df1[df1['package'].str.extract(r'([A-Za-z1-9]+)(>)(.*)')[0].isin(df2['package'])]
     df1[df1['package'].notnull()].to_csv('C:\\Users\\san\\Documents\\Python\\upgrade.txt', header=False, index=False)
-#    call('pip install --upgrade ' + '-r ' + 'C:\\Users\\san\\Documents\\Python\\upgrade.txt', shell=True)
+    call('pip install --upgrade ' + '-r ' + 'C:\\Users\\san\\Documents\\Python\\upgrade.txt', shell=True)
 else:
     print('File containing Null/NA values in the first column')
