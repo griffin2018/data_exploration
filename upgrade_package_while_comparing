@@ -17,8 +17,8 @@ elif df2['package'].notnull().all():
     
     df3 = df1.merge(df2, how='inner', left_on='pack_1', right_on='package')
     df3 = df3.reset_index()
-    df3['combined'] = [df3.loc[i, 'pack_1'] + df3.loc[i, 'sign_1'] + df3.loc[i, 'ver_1'] if pd.isna(df3.loc[i, 'version'])
-                       else df3.loc[i, 'pack_1'] + df3.loc[i, 'sign_1'] + df3.loc[i, 'version']
+    df3['combined'] = [df3.loc[i, ['pack_1', 'sign_1', 'ver_1']].astype(str).sum() if pd.isna(df3.loc[i, 'version'])
+                       else df3.loc[i, ['pack_1', 'sign_1', 'version']].astype(str).sum()
                        for i in df3.index]
 
     df3['combined'].to_csv('C:\\Users\\san\\Documents\\Python\\upgrade.txt', header=False, index=False)
