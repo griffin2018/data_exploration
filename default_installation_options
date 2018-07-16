@@ -1,0 +1,18 @@
+# refer to the following url for detailed explanations on the commands used
+# https://docs.python.org/3/library/sysconfig.html or simply google it
+
+import sysconfig
+
+sysconfig.get_platform()
+sysconfig.get_python_version()
+sysconfig.get_scheme_names()
+
+# this is the default path used while installing python
+sysconfig.get_paths()
+
+def check_default_scheme_name(x):
+    for a, b in enumerate(x):
+        if sysconfig.get_paths(b)['stdlib'] == sysconfig.get_paths()['stdlib']:
+            print('Default scheme utilized is: ' + str(b))
+            
+check_default_scheme_name(sysconfig.get_scheme_names())
